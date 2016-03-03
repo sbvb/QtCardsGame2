@@ -5,7 +5,7 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
-
+#include <baralho.h>
 jogo::jogo(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::jogo)
@@ -18,13 +18,14 @@ jogo::~jogo()
     delete ui;
 }
 // Rascunho do Baralho
-
+#include <algorithm>
+#include <ctime>
+#include <cstdlib>
 #include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
-
-/**
+     /**
  * representa o local onde uma carta pode estar
  */
 struct LocalCarta {
@@ -34,20 +35,20 @@ struct LocalCarta {
     };
 };
 
-//enum Naipe {
+//enum Carta::Naipe {
 //    Paus, Espadas, Copas, Ouros
 //};
 
-//enum CartaValor {
+//enum Carta::CartaValor {
 //    A, _2, _3, _4, _5, _6, _7, _8, _9, _10, J, Q, K
 //};
-
 
 
 //class Carta {
 //    int local;
 //    Naipe naipe;
 //    CartaValor valor;
+
 
 //    QRectF boundingRect(){
 //        return QRectF();
@@ -57,8 +58,8 @@ struct LocalCarta {
 //        painter;
 //    }
 
-    Carta(Naipe n, CartaValor v) : naipe(n), valor(v), local(-1) {
-    }
+//    Carta(Naipe n, CartaValor v) : naipe(n), valor(v), local(-1) {
+//    }
 
 //    friend ostream & operator<<(ostream & out, Carta & carta) {
 //        string naipeStr = "empty";
@@ -88,12 +89,12 @@ struct LocalCarta {
     };
 //};
 
-struct Baralho {
-    vector<Carta> m_cartas;
+//struct Baralho {
+//    vector<Carta> m_cartas;
 
-public:
+//public:
 
-    void preencherDeFormaPadrao() {
+   void Baralho::preencherDeFormaPadrao() {
         m_cartas.push_back(Carta(Paus, A));
         m_cartas.push_back(Carta(Paus, _2));
         m_cartas.push_back(Carta(Paus, _3));
@@ -147,11 +148,16 @@ public:
         m_cartas.push_back(Carta(Ouros, Q));
         m_cartas.push_back(Carta(Ouros, K));
     }
+   int myrandom (int i) { return std::rand()%i;};
 
-    void embaralhar() {
+
+
+   void Baralho::embaralhar() {
+
+        std::random_shuffle ( m_cartas.begin(), m_cartas.end(), myrandom );//Codigo para embaralhar *Experimental*
     }
 
-    void dumpCartas() {
+   void Baralho::dumpCartas() {
         vector<Carta>::iterator it;
         // a loop to scan the STL container
         for (it = m_cartas.begin();
@@ -161,7 +167,7 @@ public:
         }
     }
 
-    static void testMe() {
+   void Baralho::testMe() {
         cout << "Baralho::testMe()" << endl;
 
         Baralho baralho;
@@ -172,7 +178,7 @@ public:
         baralho.dumpCartas();
 
     }
-};
+
 
 struct Jogo {
     Baralho m_baralho;
@@ -180,11 +186,19 @@ struct Jogo {
 
     Jogo() {
         m_baralho.preencherDeFormaPadrao();
+        m_baralho.embaralhar();
     }
 
     void algunsJogadores() {
         m_locais.push_back(LocalCarta("Jogador")); // 0
-        m_locais.push_back(LocalCarta("Mesa")); // 1
+        m_locais.push_back(LocalCarta("Col1")); // 1
+        m_locais.push_back(LocalCarta("Col2")); // 2
+        m_locais.push_back(LocalCarta("Col3")); // 3
+        m_locais.push_back(LocalCarta("Col4")); // 4
+        m_locais.push_back(LocalCarta("Col5")); // 5
+        m_locais.push_back(LocalCarta("Col6")); // 6
+        m_locais.push_back(LocalCarta("Col7")); // 7
+        m_locais.push_back(LocalCarta("Col8")); // 8
     }
 
     /**

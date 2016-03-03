@@ -1,9 +1,12 @@
 #ifndef BARALHO_H
 #define BARALHO_H
-
-#endif // BARALHO_H
+using std::vector;
+#include <ctime>
+#include <algorithm>
+#include <cstdlib>
 #include <vector>
 #include "carta.h"
+
 class Baralho {
 
 public:
@@ -18,3 +21,4 @@ public:
     static void testMe() ;
 
 };
+#endif // BARALHO_H

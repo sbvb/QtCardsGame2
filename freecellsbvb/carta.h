@@ -1,8 +1,7 @@
 #ifndef CARTA_H
 #define CARTA_H
-
-#endif // CARTA_H
-
+#include <iostream>
+using namespace std;
 enum Naipe {
     Paus, Espadas, Copas, Ouros
 };
@@ -18,6 +17,27 @@ class Carta
     int local;
     Naipe naipe;
     CartaValor valor;
+
+    friend std::ostream & operator<<(std::ostream & out, Carta & carta) {
+        string naipeStr = "empty";
+        string valorStr = "empty";
+        switch (carta.naipe) {
+            case Paus:
+                naipeStr = "Paus";
+                break;
+            case Espadas:
+                naipeStr = "Espadas";
+                break;
+            case Copas:
+                naipeStr = "Copas";
+                break;
+            case Ouros:
+                naipeStr = "Ouros";
+                break;
+        }
+        out << naipeStr << ":" << carta.valor << "[" << carta.local << "]";
+        return out;
+    }
 
 //    QRectF boundingRect(){
 //        return QRectF();
@@ -35,3 +55,4 @@ class Carta
     static void testMe();
 
 };
+#endif // CARTA_H
