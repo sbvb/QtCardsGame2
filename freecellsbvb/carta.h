@@ -14,7 +14,7 @@ enum CartaValor {
 class Carta
 {
     public:
-    int local;
+//    int local;
     Naipe naipe;
     CartaValor valor;
 
@@ -35,7 +35,7 @@ class Carta
                 naipeStr = "Ouros";
                 break;
         }
-        out << naipeStr << ":" << carta.valor << "[" << carta.local << "]";
+//        out << naipeStr << ":" << carta.valor <<;
         return out;
     }
 
@@ -47,7 +47,7 @@ class Carta
 //        painter;
 //    }
 
-        Carta(Naipe n, CartaValor v): naipe(n), valor(v), local(-1){
+        Carta(Naipe n, CartaValor v): naipe(n), valor(v){
         }
 
 //    friend ostream & operator<<(ostream & out, Carta & carta);
