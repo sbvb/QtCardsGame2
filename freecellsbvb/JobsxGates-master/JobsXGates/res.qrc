@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/bg.png</file>
+        <file>images/bullet.png</file>
+        <file>images/enemy.png</file>
+        <file>images/player.png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>../../Pictures/bullet.png</file>
+    </qresource>
+    <qresource prefix="/sounds">
+        <file>../../Downloads/bullet.wav</file>
+        <file>../../Downloads/Sad-instrumental-music/bgsound.mp3</file>
+        <file>../../Downloads/Incidental-music/Incidental-music.mp3</file>
+    </qresource>
+</RCC>
